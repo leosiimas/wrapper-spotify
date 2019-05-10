@@ -1,0 +1,39 @@
+{
+  "name": "wrapper-spotify",
+  "version": "1.0.0",
+  "description": "A wrapper to work with the Spotify Web API",
+  "main": "index.js",
+  "scripts": {
+    "lint": "./node_modules/.bin/eslint src/*.js",
+    "prepush": "npm run lint",
+    "test": "./node_modules/.bin/mocha tests/**/*.spec.js",
+    "test:tdd":"./node_modules/.bin/mocha tests/**/*.spec.js --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "(https://github.com/leosiimas/wrapper-spotify)"
+  },
+  "keywords": [
+    "js",
+    "tdd",
+    "library"
+  ],
+  "author": "Leonardo Abreu <leonardo.abreu@inf.ufrgs.br>",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.0.4",
+    "babel-preset-es2015-native-modules": "^6.9.4",
+    "chai": "^4.2.0",
+    "eslint": "^5.9.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-react": "^7.11.1",
+    "husky": "^1.1.4",
+    "mocha": "^5.2.0"
+  },
+  "dependencies": {
+    "lint": "^1.1.2"
+  }
+}

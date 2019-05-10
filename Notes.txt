@@ -1,0 +1,16 @@
+Estrutura Inicial do Projeto
+
+- Airbnb:  https://github.com/airbnb/javascript => A mostly reasonable approach to JavaScript;
+- PurpleBooth:  https://gist.github.com/PurpleBooth/109311bb0361f32d87a2 => Template to README;
+- Eslint: https://github.com/eslint/eslint => ESLint is a tool for identifying and reporting on patterns found in ECMAScript/JavaScript code;
+- EditorConfi:  https://editorconfig.org/ => EditorConfig helps developers define and maintain consistent coding styles;
+- Husky:  https://github.com/typicode/husky => Husky can prevent bad git commit, git push and more 🐶 woof!
+
+
+Estrutura de Testes
+
+- Moocha: https://mochajs.org/ =>  simple, flexible, fun javascript test framework for node.js & the browser https://mochajs.org;
+- Chai: https://www.chaijs.com/ => BDD / TDD assertion framework for node.js and the browser that can be paired with any testing framework;
+- Insanbul: https://istanbul.js.org/ => Istanbul instruments your ES5 and ES2015+ JavaScript code with line counters, so that you can track how well your unit-tests exercise your codebase.
+- Nyc: https://github.com/istanbuljs/nyc/ => Test spies, stubs and mocks for JavaScript;
+- Sinon: https://sinonjs.org/ => the Istanbul command line interface;
