@@ -4,9 +4,9 @@
 	else if(typeof define === 'function' && define.amd)
 		define([], factory);
 	else if(typeof exports === 'object')
-		exports["spotifyWrapper"] = factory();
+		exports["SpotifyWrapper"] = factory();
 	else
-		root["spotifyWrapper"] = factory();
+		root["SpotifyWrapper"] = factory();
 })(this, function() {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
@@ -84,9 +84,17 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
+var TOKEN_API = exports.TOKEN_API = 'BQDqfnVlB1yxd7vt7PIOCCbp4q5P0eKwv-qut-JC-5cJt-W7VtCzAjePIP5QV4B19lEcRX7uRhStXQHsdYjYXgo8yZAOiFO_YAhxvWvVuGc6ye2zt5wxhc-U-CMc5SF5Zmj2kP8TwtpypewAaSfWxEmU2o8rP8tRWDshhOOx2TANvN2x2ez8bUWnLvPRfRU-vfUhEt3cQ2Fe134Y7Ztpr9r_EpYdcDu_Rz36WKEgB1sUIt-8QjAN4LvDGeG3qLYHGjIEeR3SIe_5P-lJlxQc';
+
 var API_URL = exports.API_URL = 'https://api.spotify.com/v1';
+
+var HEADERS = {
+    headers: {
+        'Authorization': 'Bearer ' + TOKEN_API
+    }
+};
 
 /***/ }),
 /* 1 */
@@ -119,15 +127,15 @@ var _config = __webpack_require__(0);
 var _utils = __webpack_require__(1);
 
 var getAlbum = exports.getAlbum = function getAlbum(id) {
-  return fetch(_config.API_URL + '/albums/' + id).then(_utils.toJSON);
+  return fetch(_config.API_URL + '/albums/' + id, _config.HEADERS).then(_utils.toJSON);
 };
 
 var getAlbums = exports.getAlbums = function getAlbums(ids) {
-  return fetch(_config.API_URL + '/albums/?ids=' + ids).then(_utils.toJSON);
+  return fetch(_config.API_URL + '/albums/?ids=' + ids, _config.HEADERS).then(_utils.toJSON);
 };
 
 var getTracks = exports.getTracks = function getTracks(id) {
-  return fetch(_config.API_URL + '/albums/' + id + '/tracks').then(_utils.toJSON);
+  return fetch(_config.API_URL + '/albums/' + id + '/tracks', _config.HEADERS).then(_utils.toJSON);
 };
 
 /***/ }),
@@ -147,7 +155,7 @@ var _config = __webpack_require__(0);
 var _utils = __webpack_require__(1);
 
 var search = exports.search = function search(query, type) {
-  return fetch(_config.API_URL + '/search?q=' + query + '&type=' + type).then(_utils.toJSON);
+  return fetch(_config.API_URL + '/search?q=' + query + '&type=' + type, _config.HEADERS).then(_utils.toJSON);
 };
 
 var searchArtists = exports.searchArtists = function searchArtists(query) {
