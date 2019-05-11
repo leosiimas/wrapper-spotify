@@ -7,14 +7,18 @@ sinonStubPromise(sinon);
 
 global.fetch = require('node-fetch')
 
-import { getAlbum, getAlbums, getTracks } from '../src/album'
+import SpotifyWrapper from '../src/index'
 
 describe('Spotify Album', () => {
 
+  let spotify;
   let fetchedStub;
   let promise;
 
   beforeEach(() => {
+    spotify = new SpotifyWrapper({
+      token: 'foo'
+    })
     fetchedStub = sinon.stub(global, 'fetch');
     promise = fetchedStub.returnsPromise();
   });
@@ -26,15 +30,15 @@ describe('Spotify Album', () => {
   describe('Smoke Tests:', () => {
 
     it('should exist the getAlbum method', () => {
-      expect(getAlbum).to.exist;
+      expect(spotify.album.getAlbum).to.exist;
     });
 
     it('should exist the getAlbums method', () => {
-      expect(getAlbums).to.exist;
+      expect(spotify.album.getAlbums).to.exist;
     });
 
     it('should exist the getTracks method', () => {
-      expect(getTracks).to.exist;
+      expect(spotify.album.getTracks).to.exist;
     });
 
   });
@@ -43,7 +47,7 @@ describe('Spotify Album', () => {
 
     it('should call fetch function', () => {
 
-      const album = getAlbum();
+      const album = spotify.album.getAlbum();
 
       expect(fetchedStub).to.have.been.calledOnce;
 
@@ -51,7 +55,7 @@ describe('Spotify Album', () => {
 
     it('should call fetch with correct URL', () => {
 
-      const artists = getAlbum('2ye2Wgw4gimLv2eAKyk1NB');
+      const artists = spotify.album.getAlbum('2ye2Wgw4gimLv2eAKyk1NB');
 
         expect(fetchedStub).to.have.been
           .calledWith('https://api.spotify.com/v1/albums/2ye2Wgw4gimLv2eAKyk1NB');
@@ -59,7 +63,7 @@ describe('Spotify Album', () => {
 
     it('should return the JSON Data from the Promise', () => {
       promise.resolves({body: 'json'});
-      const artists = getAlbum('2ye2Wgw4gimLv2eAKyk1NB');
+      const artists = spotify.album.getAlbum('2ye2Wgw4gimLv2eAKyk1NB');
 
       expect(artists.resolveValue).to.be.eql({body: 'json'});
     });
@@ -70,7 +74,7 @@ describe('Spotify Album', () => {
 
     it('should call fetch function', () => {
 
-      const albums = getAlbums();
+      const albums = spotify.album.getAlbums();
 
       expect(fetchedStub).to.have.been.calledOnce;
 
@@ -78,7 +82,7 @@ describe('Spotify Album', () => {
 
     it('should call fetch with correct URL', () => {
 
-      const artists = getAlbums(['2ye2Wgw4gimLv2eAKyk1NB','2ye2Wgw4gimLv2eAKyk12B']);
+      const artists = spotify.album.getAlbums(['2ye2Wgw4gimLv2eAKyk1NB','2ye2Wgw4gimLv2eAKyk12B']);
 
         expect(fetchedStub).to.have.been
           .calledWith('https://api.spotify.com/v1/albums/?ids=2ye2Wgw4gimLv2eAKyk1NB,2ye2Wgw4gimLv2eAKyk12B');
@@ -86,7 +90,7 @@ describe('Spotify Album', () => {
 
     it('should return the JSON Data from the Promise', () => {
       promise.resolves({album: 'name'});
-      const artists = getAlbums(['2ye2Wgw4gimLv2eAKyk1NB','2ye2Wgw4gimLv2eAKyk12B']);
+      const artists = spotify.album.getAlbums(['2ye2Wgw4gimLv2eAKyk1NB','2ye2Wgw4gimLv2eAKyk12B']);
 
       expect(artists.resolveValue).to.be.eql({album: 'name'});
     });
@@ -97,7 +101,7 @@ describe('Spotify Album', () => {
 
     it('should call fetch function', () => {
 
-      const tracks = getTracks();
+      const tracks = spotify.album.getTracks();
 
       expect(fetchedStub).to.have.been.calledOnce;
 
@@ -105,7 +109,7 @@ describe('Spotify Album', () => {
 
     it('should call fetch with correct URL', () => {
 
-      const artists = getTracks('2ye2Wgw4gimLv2eAKyk1NB');
+      const artists = spotify.album.getTracks('2ye2Wgw4gimLv2eAKyk1NB');
 
         expect(fetchedStub).to.have.been
           .calledWith('https://api.spotify.com/v1/albums/2ye2Wgw4gimLv2eAKyk1NB/tracks');
@@ -113,7 +117,7 @@ describe('Spotify Album', () => {
 
     it('should return the JSON Data from the Promise', () => {
       promise.resolves({album: 'name'});
-      const artists = getAlbums('2ye2Wgw4gimLv2eAKyk1NB');
+      const artists = spotify.album.getTracks('2ye2Wgw4gimLv2eAKyk1NB');
 
       expect(artists.resolveValue).to.be.eql({album: 'name'});
     });

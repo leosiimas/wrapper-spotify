@@ -5,7 +5,7 @@ global.fetch = require('node-fetch');
 import SpotifyWrapper from '../src/index';
 
 const spotify = new SpotifyWrapper({
-  token: 'BQAvnfpiNS3Jw8NA8VT56xtmHmIwyLVd9S1qLu6-zDN-hARckKKcqbsFc8U2BmDM05sjC9uulBKPLNG7mZpnDdtVw4YO13UB6R5TfOEaUbh-NteOruBzJVBRH-whR0aPTTaQvMjsM7AAuqgYRAs'
+  token: 'BQAVK9i9zmMpHXU97iKIrmUWerAt5HoWiGBA3826oC-gn0XTOeYt5an9EydgWHowvyZ2bNBdgUIsTvsrnUAzEhcLA4hgoDy4qkT1NsXDjfl2tX2BTVWFPOiYSMkW2yVzi8hRy-6D8WMw6HcIFproxl5hOKRH0DGC9Sn5k-DU4clkpsup1brlbkQ5tYd3THrVZPHSHoHrHsdA91TuEeR6nbv7UsBM47E4IoNSqKfwyeDZ1MxS_M41iI5pHKbyinwDe0Beky6Vqrm0xGRHWEkF'
 });
 
 const albums = spotify.search.albums('Incubus');
